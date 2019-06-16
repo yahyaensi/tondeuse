@@ -1,5 +1,6 @@
 package fr.mowitnow.tondeuse.application;
 
+import fr.mowitnow.tondeuse.model.PelouseModel;
 import fr.mowitnow.tondeuse.model.PositionModel;
 import fr.mowitnow.tondeuse.model.TondeuseModel;
 
@@ -12,22 +13,31 @@ import fr.mowitnow.tondeuse.model.TondeuseModel;
 public class TondeuseExecutor {
 
 	/**
+	 * "Pelouse" model.
+	 */
+	private PelouseModel pelouseModel;
+
+	/**
 	 * "Tondeuse" model.
 	 */
 	private TondeuseModel tondeuseModel;
-	
+
 	/**
 	 * No args constructor.
 	 */
-	public TondeuseExecutor() {}
+	public TondeuseExecutor() {
+	}
 
 	/**
 	 * Constructor.
 	 * 
+	 * @param pelouseModel
+	 *            "Pelouse" model
 	 * @param tondeuseModel
 	 *            "Tondeuse" model
 	 */
-	public TondeuseExecutor(TondeuseModel tondeuseModel) {
+	public TondeuseExecutor(PelouseModel pelouseModel, TondeuseModel tondeuseModel) {
+		this.pelouseModel = pelouseModel;
 		this.tondeuseModel = tondeuseModel;
 	}
 
@@ -50,11 +60,11 @@ public class TondeuseExecutor {
 	/**
 	 * Sets the "Tondeuse" model.
 	 * 
-	 * @param tondeuseModel "Tondeuse" model
+	 * @param tondeuseModel
+	 *            "Tondeuse" model
 	 */
 	public void setTondeuseModel(TondeuseModel tondeuseModel) {
 		this.tondeuseModel = tondeuseModel;
 	}
-	
-	
+
 }

@@ -1,7 +1,6 @@
 package fr.mowitnow.tondeuse.application;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,8 +20,6 @@ import fr.mowitnow.tondeuse.model.TondeuseModel;
 
 public class TondeuseExecutorTest {
 
-	private ClassLoader loader = ClassLoader.getSystemClassLoader();
-
 	private TondeuseExecutor tondeuseExecutor = null;
 
 	private PelouseModel pelouseModel = null;
@@ -31,8 +28,7 @@ public class TondeuseExecutorTest {
 
 	@Before
 	public void setup() throws IOException, URISyntaxException {
-		PositionModel topRightCorner = new PositionModel(5, 5);
-		pelouseModel = new PelouseModel(topRightCorner);
+		pelouseModel = new PelouseModel(new PositionModel(5, 5));
 	}
 
 	@Test
@@ -40,7 +36,7 @@ public class TondeuseExecutorTest {
 		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.G));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(0, 0), DirectionEnum.N),
 				instructionDeque);
-		tondeuseExecutor = new TondeuseExecutor(tondeuseModel);
+		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 		assertEquals("x coordinate shouldn't change", 0,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
@@ -54,7 +50,7 @@ public class TondeuseExecutorTest {
 		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.D));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(0, 0), DirectionEnum.N),
 				instructionDeque);
-		tondeuseExecutor = new TondeuseExecutor(tondeuseModel);
+		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 		assertEquals("x coordinate shouldn't change", 0,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
@@ -129,7 +125,7 @@ public class TondeuseExecutorTest {
 				InstructionEnum.G, InstructionEnum.A, InstructionEnum.G, InstructionEnum.A, InstructionEnum.A));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(1, 2), DirectionEnum.N),
 				instructionDeque);
-		tondeuseExecutor = new TondeuseExecutor(tondeuseModel);
+		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 		assertEquals("x coordinate should be 1", 1,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
@@ -144,7 +140,7 @@ public class TondeuseExecutorTest {
 				InstructionEnum.A, InstructionEnum.D, InstructionEnum.A, InstructionEnum.D, InstructionEnum.D, InstructionEnum.A));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(3, 3), DirectionEnum.E),
 				instructionDeque);
-		tondeuseExecutor = new TondeuseExecutor(tondeuseModel);
+		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 		assertEquals("x coordinate should be 3", 1,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
@@ -157,7 +153,7 @@ public class TondeuseExecutorTest {
 		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.A));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(initialX, initialY), initialDirection),
 				instructionDeque);
-		tondeuseExecutor = new TondeuseExecutor(tondeuseModel);
+		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 	}
 	
@@ -166,7 +162,7 @@ public class TondeuseExecutorTest {
 		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.A));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(initialX, initialY), initialDirection),
 				instructionDeque);
-		tondeuseExecutor = new TondeuseExecutor(tondeuseModel);
+		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 		assertEquals("x coordinate shouldn't change", initialX,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());

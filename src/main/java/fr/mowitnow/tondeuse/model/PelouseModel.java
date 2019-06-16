@@ -7,9 +7,9 @@ package fr.mowitnow.tondeuse.model;
  * @version 1.0.0
  */
 public class PelouseModel {
-	
+
 	private PositionModel bottomLeftCornerPos = new PositionModel(0, 0);
-	
+
 	private PositionModel topRightCornerPos = null;
 
 	public PelouseModel(PositionModel topRightCornerPos) {
@@ -23,9 +23,5 @@ public class PelouseModel {
 	public PositionModel getTopRightCornerPos() {
 		return topRightCornerPos;
 	}
-	
-	
-	
-	
 
 }
