@@ -55,7 +55,5 @@ public class PositionDirectionModel {
 	public String toString() {
 		return positionModel.getX() + " " + positionModel.getY() + " " + direction.name();
 	}
-	
-	
 
 }

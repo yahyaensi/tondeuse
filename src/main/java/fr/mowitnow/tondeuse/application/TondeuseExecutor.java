@@ -25,7 +25,6 @@ public class TondeuseExecutor {
 	 */
 	private TondeuseModel tondeuseModel;
 
-
 	/**
 	 * Constructor.
 	 * 

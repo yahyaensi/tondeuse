@@ -22,8 +22,7 @@ import fr.mowitnow.tondeuse.model.PositionModel;
 import fr.mowitnow.tondeuse.model.TondeuseModel;
 
 /**
- * The processor that reads the instructions file and transforms its content to
- * a model.
+ * This parser reads the instructions file and transforms its content to models.
  * 
  * @author Yahya
  * @version 1.0.0
@@ -43,7 +42,8 @@ public final class InstructionsFileParser {
 			String topRightCornerCoordinatesLine = br.readLine();
 			int[] topRightCornerCoordinates = Arrays.stream(topRightCornerCoordinatesLine.trim().split(" "))
 					.mapToInt(Integer::parseInt).toArray();
-			PositionModel topRightCornerPosition = new PositionModel(topRightCornerCoordinates[0], topRightCornerCoordinates[1]);
+			PositionModel topRightCornerPosition = new PositionModel(topRightCornerCoordinates[0],
+					topRightCornerCoordinates[1]);
 			pelouseModel = new PelouseModel(topRightCornerPosition);
 
 			// Build the "Tondeuse" models.

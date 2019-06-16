@@ -11,27 +11,27 @@ import java.util.stream.Stream;
  * @version 1.0.0
  */
 public enum DirectionEnum {
-	
+
 	/**
 	 * North.
 	 */
 	N,
-	
+
 	/**
 	 * East.
 	 */
 	E,
-	
+
 	/**
 	 * South.
 	 */
 	S,
-	
+
 	/**
 	 * West
 	 */
 	W;
-	
+
 	/**
 	 * Returns values as a string list.
 	 * 

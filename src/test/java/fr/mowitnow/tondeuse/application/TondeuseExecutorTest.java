@@ -42,7 +42,8 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate shouldn't change", 0,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be west", DirectionEnum.W, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be west", DirectionEnum.W,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
 
 	@Test
@@ -56,7 +57,8 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate shouldn't change", 0,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be east", DirectionEnum.E, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be east", DirectionEnum.E,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
 
 	@Test
@@ -66,9 +68,10 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate shouldn change", 3,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be west", DirectionEnum.N, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be west", DirectionEnum.N,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
-	
+
 	@Test
 	public void move_tondeuse_forward_to_east() {
 		move_tondeuse_forward(DirectionEnum.E, 2, 2);
@@ -76,9 +79,10 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate shouldn't change", 2,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be west", DirectionEnum.E, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be west", DirectionEnum.E,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
-	
+
 	@Test
 	public void move_tondeuse_forward_to_west() {
 		move_tondeuse_forward(DirectionEnum.W, 2, 2);
@@ -86,9 +90,10 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate shouldn't change", 2,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be west", DirectionEnum.W, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be west", DirectionEnum.W,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
-	
+
 	@Test
 	public void move_tondeuse_forward_to_south() {
 		move_tondeuse_forward(DirectionEnum.S, 2, 2);
@@ -96,33 +101,35 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate should change", 1,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be south", DirectionEnum.S, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be south", DirectionEnum.S,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
-	
+
 	@Test
 	public void ignore_move_instruction_if_next_move_to_north_is_outside_pelouse() {
 		ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum.N, 0, 5);
 	}
-	
+
 	@Test
-	public void ignore_move_instruction_if_next_move_to_south_is_outside_pelouse() {		
+	public void ignore_move_instruction_if_next_move_to_south_is_outside_pelouse() {
 		ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum.S, 0, 0);
 	}
-	
+
 	@Test
-	public void ignore_move_instruction_if_next_move_to_east_is_outside_pelouse() {		
+	public void ignore_move_instruction_if_next_move_to_east_is_outside_pelouse() {
 		ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum.E, 5, 0);
 	}
-	
+
 	@Test
-	public void ignore_move_instruction_if_next_move_to_west_is_outside_pelouse() {		
+	public void ignore_move_instruction_if_next_move_to_west_is_outside_pelouse() {
 		ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum.W, 0, 0);
 	}
 
 	@Test
 	public void move_tondeuse_to_final_position_first_case() {
-		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.G, InstructionEnum.A, InstructionEnum.G, InstructionEnum.A,
-				InstructionEnum.G, InstructionEnum.A, InstructionEnum.G, InstructionEnum.A, InstructionEnum.A));
+		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(
+				Arrays.asList(InstructionEnum.G, InstructionEnum.A, InstructionEnum.G, InstructionEnum.A,
+						InstructionEnum.G, InstructionEnum.A, InstructionEnum.G, InstructionEnum.A, InstructionEnum.A));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(1, 2), DirectionEnum.N),
 				instructionDeque);
 		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
@@ -131,13 +138,15 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate should be 3", 3,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be north", DirectionEnum.N, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be north", DirectionEnum.N,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
-	
+
 	@Test
 	public void move_tondeuse_to_final_position_second_case() {
-		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.A, InstructionEnum.A, InstructionEnum.D, InstructionEnum.A,
-				InstructionEnum.A, InstructionEnum.D, InstructionEnum.A, InstructionEnum.D, InstructionEnum.D, InstructionEnum.A));
+		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.A, InstructionEnum.A,
+				InstructionEnum.D, InstructionEnum.A, InstructionEnum.A, InstructionEnum.D, InstructionEnum.A,
+				InstructionEnum.D, InstructionEnum.D, InstructionEnum.A));
 		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(3, 3), DirectionEnum.E),
 				instructionDeque);
 		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
@@ -146,30 +155,32 @@ public class TondeuseExecutorTest {
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate should be 1", 1,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be east", DirectionEnum.E, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be east", DirectionEnum.E,
+				tondeuseModel.getFinalPositionDirection().getDirection());
 	}
-	
+
 	private void move_tondeuse_forward(DirectionEnum initialDirection, int initialX, int initialY) {
 		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.A));
-		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(initialX, initialY), initialDirection),
-				instructionDeque);
+		tondeuseModel = new TondeuseModel(
+				new PositionDirectionModel(new PositionModel(initialX, initialY), initialDirection), instructionDeque);
 		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 	}
-	
-	
-	private void ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum initialDirection, int initialX, int initialY) {
+
+	private void ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum initialDirection,
+			int initialX, int initialY) {
 		Deque<InstructionEnum> instructionDeque = new ArrayDeque<>(Arrays.asList(InstructionEnum.A));
-		tondeuseModel = new TondeuseModel(new PositionDirectionModel(new PositionModel(initialX, initialY), initialDirection),
-				instructionDeque);
+		tondeuseModel = new TondeuseModel(
+				new PositionDirectionModel(new PositionModel(initialX, initialY), initialDirection), instructionDeque);
 		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
 		assertEquals("x coordinate shouldn't change", initialX,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
 		assertEquals("y coordinate shouldn't change", initialY,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction shouldn't change", initialDirection, tondeuseModel.getFinalPositionDirection().getDirection());
-		
+		assertEquals("direction shouldn't change", initialDirection,
+				tondeuseModel.getFinalPositionDirection().getDirection());
+
 	}
 
 }
