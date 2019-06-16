@@ -15,6 +15,11 @@ public class TondeuseExecutor {
 	 * "Tondeuse" model.
 	 */
 	private TondeuseModel tondeuseModel;
+	
+	/**
+	 * No args constructor.
+	 */
+	public TondeuseExecutor() {}
 
 	/**
 	 * Constructor.
@@ -41,4 +46,15 @@ public class TondeuseExecutor {
 	 */
 	public void executeInstructions() {
 	}
+
+	/**
+	 * Sets the "Tondeuse" model.
+	 * 
+	 * @param tondeuseModel "Tondeuse" model
+	 */
+	public void setTondeuseModel(TondeuseModel tondeuseModel) {
+		this.tondeuseModel = tondeuseModel;
+	}
+	
+	
 }

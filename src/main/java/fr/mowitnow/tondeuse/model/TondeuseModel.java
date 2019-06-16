@@ -1,7 +1,6 @@
 package fr.mowitnow.tondeuse.model;
 
 import java.util.Deque;
-import java.util.List;
 
 import fr.mowitnow.tondeuse.enumeration.InstructionEnum;
 
@@ -16,7 +15,7 @@ public class TondeuseModel {
 	/**
 	 * Initial position of the "Tondeuse".
 	 */
-	private PositionModel initialPosition;
+	private PositionDirectionModel initialPositionDirection;
 
 	/**
 	 * Instructions chain that the "Tondeuse" should do.
@@ -24,21 +23,21 @@ public class TondeuseModel {
 	private Deque<InstructionEnum> instructionDeque;
 
 	/**
-	 * Final position of the "Tondeuse".
+	 * Final position and direction of the "Tondeuse".
 	 */
-	private PositionModel finalPosition;
+	private PositionDirectionModel finalPositionDirection;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param initialPosition
-	 *            Initial position of the "Tondeuse"
-	 * @param instructionChain
-	 *            Instructions chain that the "Tondeuse" should do
+	 * @param initialPositionDirection
+	 *            Initial position and direction of the "Tondeuse"
+	 * @param instructionDeque
+	 *            Instructions that the "Tondeuse" should do
 	 */
-	public TondeuseModel(PositionModel initialPosition, List<String> instructionChain) {
-		this.initialPosition = initialPosition;
-		// this.instructionChain = instructionChain;
+	public TondeuseModel(PositionDirectionModel initialPositionDirection, Deque<InstructionEnum> instructionDeque) {
+		this.initialPositionDirection = initialPositionDirection;
+		this.instructionDeque = instructionDeque;
 	}
 
 	/**
@@ -51,31 +50,31 @@ public class TondeuseModel {
 	}
 
 	/**
-	 * Returns the initial position of the "Tondeuse".
+	 * Returns the initial position and direction of the "Tondeuse".
 	 * 
-	 * @return
+	 * @return the initial position and direction of the "Tondeuse".
 	 */
-	public PositionModel getInitialPosition() {
-		return initialPosition;
+	public PositionDirectionModel getInitialPositionDirection() {
+		return initialPositionDirection;
 	}
 
 	/**
-	 * Returns the final position of the "Tondeuse".
+	 * Returns the final position and direction of the "Tondeuse".
 	 * 
 	 * @return the final {@link PositionModel} of the "Tondeuse"
 	 */
-	public PositionModel getFinalPosition() {
-		return finalPosition;
+	public PositionDirectionModel getFinalPositionDirection() {
+		return finalPositionDirection;
 	}
 
 	/**
-	 * Sets the final position of the "Tondeuse"
+	 * Sets the final position and direction of the "Tondeuse"
 	 * 
-	 * @param finalPosition
-	 *            final position
+	 * @param finalPositionDirection
+	 *            final position and direction
 	 */
-	public void setFinalPosition(PositionModel finalPosition) {
-		this.finalPosition = finalPosition;
+	public void setFinalPosition(PositionDirectionModel finalPositionDirection) {
+		this.finalPositionDirection = finalPositionDirection;
 	}
 
 }

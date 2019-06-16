@@ -1,7 +1,5 @@
 package fr.mowitnow.tondeuse.model;
 
-import fr.mowitnow.tondeuse.enumeration.InstructionEnum;
-
 /**
  * Position model.
  * 
@@ -21,24 +19,16 @@ public class PositionModel {
 	private int y;
 
 	/**
-	 * Current direction.
-	 */
-	private InstructionEnum direction;
-
-	/**
 	 * Constructor.
 	 * 
 	 * @param x
 	 *            abscissa
 	 * @param y
 	 *            abscissa
-	 * @param direction
-	 *            current direction
 	 */
-	public PositionModel(int x, int y, InstructionEnum direction) {
+	public PositionModel(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.direction = direction;
 	}
 
 	/**
@@ -57,15 +47,6 @@ public class PositionModel {
 	 */
 	public int getY() {
 		return y;
-	}
-
-	/**
-	 * Returns current direction.
-	 * 
-	 * @return current direction
-	 */
-	public InstructionEnum getDirection() {
-		return direction;
 	}
 
 }
