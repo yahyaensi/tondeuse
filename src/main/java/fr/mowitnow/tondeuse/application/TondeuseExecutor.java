@@ -66,9 +66,11 @@ public class TondeuseExecutor {
 	}
 
 	/**
-	 * Execute all instructions.
+	 * Executes all instructions and returns the "Tondeuse"'s final position.
+	 * 
+	 * @return the "Tondeuse"'s final position
 	 */
-	public void executeInstructions() {
+	public PositionDirectionModel executeInstructions() {
 		PositionDirectionModel newPositionDirectionModel = null;
 		while (tondeuseModel.hasInstruction()) {
 			newPositionDirectionModel = executeNextInstruction();
@@ -77,6 +79,7 @@ public class TondeuseExecutor {
 			}
 		}
 		tondeuseModel.setFinalPosition(tondeuseModel.getCurrentPositionDirection());
+		return tondeuseModel.getFinalPositionDirection();
 	}
 
 	private DirectionEnum rotateTondeuseToRight(DirectionEnum currentDirection) {

@@ -51,4 +51,11 @@ public class PositionDirectionModel {
 		return direction;
 	}
 
+	@Override
+	public String toString() {
+		return positionModel.getX() + " " + positionModel.getY() + " " + direction.name();
+	}
+	
+	
+
 }
