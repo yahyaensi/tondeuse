@@ -12,8 +12,11 @@ import java.util.Deque;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.javatuples.Pair;
+
 import fr.mowitnow.tondeuse.enumeration.DirectionEnum;
 import fr.mowitnow.tondeuse.enumeration.InstructionEnum;
+import fr.mowitnow.tondeuse.model.PelouseModel;
 import fr.mowitnow.tondeuse.model.PositionDirectionModel;
 import fr.mowitnow.tondeuse.model.PositionModel;
 import fr.mowitnow.tondeuse.model.TondeuseModel;
@@ -26,20 +29,22 @@ import fr.mowitnow.tondeuse.model.TondeuseModel;
  * @version 1.0.0
  * 
  */
-public class InstructionsFileParser {
+public final class InstructionsFileParser {
 
-	private PositionModel topRightCornerPosition = null;;
+	private InstructionsFileParser() {
+	}
 
-	private List<TondeuseModel> tondeuseModelList = new ArrayList<>();
-
-	public final void parseInstructionsFile() throws FileNotFoundException, IOException {
-		File instructionsFile = new File(Application.class.getClassLoader().getResource("instructions.txt").getFile());
+	public static final Pair<PelouseModel, List<TondeuseModel>> parseInstructionsFile(File instructionsFile)
+			throws FileNotFoundException, IOException {
+		PelouseModel pelouseModel = null;
+		List<TondeuseModel> tondeuseModelList = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(instructionsFile))) {
-			// Get top right corner coordinates.
+			// Get top right corner coordinates of the "Pelouse".
 			String topRightCornerCoordinatesLine = br.readLine();
 			int[] topRightCornerCoordinates = Arrays.stream(topRightCornerCoordinatesLine.trim().split(" "))
 					.mapToInt(Integer::parseInt).toArray();
-			topRightCornerPosition = new PositionModel(topRightCornerCoordinates[0], topRightCornerCoordinates[1]);
+			PositionModel topRightCornerPosition = new PositionModel(topRightCornerCoordinates[0], topRightCornerCoordinates[1]);
+			pelouseModel = new PelouseModel(topRightCornerPosition);
 
 			// Build the "Tondeuse" models.
 			String initialPosDirLine, instructionLine;
@@ -57,14 +62,8 @@ public class InstructionsFileParser {
 				tondeuseModelList.add(tondeuseModel);
 			}
 		}
-	}
 
-	public PositionModel getTopRightCornerPosition() {
-		return topRightCornerPosition;
-	}
-
-	public List<TondeuseModel> getTondeuseModelList() {
-		return tondeuseModelList;
+		return new Pair<>(pelouseModel, tondeuseModelList);
 	}
 
 }
