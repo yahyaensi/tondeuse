@@ -101,7 +101,7 @@ public class TondeuseExecutorTest {
 	
 	@Test
 	public void ignore_move_instruction_if_next_move_to_north_is_outside_pelouse() {
-		ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum.N, 5, 0);
+		ignore_move_instruction_if_next_move_is_outside_pelouse_generic_test(DirectionEnum.N, 0, 5);
 	}
 	
 	@Test
@@ -142,11 +142,11 @@ public class TondeuseExecutorTest {
 				instructionDeque);
 		tondeuseExecutor = new TondeuseExecutor(pelouseModel, tondeuseModel);
 		tondeuseExecutor.executeInstructions();
-		assertEquals("x coordinate should be 3", 1,
+		assertEquals("x coordinate should be 5", 5,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getX());
-		assertEquals("y coordinate should be 3", 3,
+		assertEquals("y coordinate should be 1", 1,
 				tondeuseModel.getFinalPositionDirection().getPositionModel().getY());
-		assertEquals("direction should be east", DirectionEnum.N, tondeuseModel.getFinalPositionDirection().getDirection());
+		assertEquals("direction should be east", DirectionEnum.E, tondeuseModel.getFinalPositionDirection().getDirection());
 	}
 	
 	private void move_tondeuse_forward(DirectionEnum initialDirection, int initialX, int initialY) {

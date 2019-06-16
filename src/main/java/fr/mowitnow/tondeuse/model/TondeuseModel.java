@@ -42,6 +42,7 @@ public class TondeuseModel {
 	 */
 	public TondeuseModel(PositionDirectionModel initialPositionDirection, Deque<InstructionEnum> instructionDeque) {
 		this.initialPositionDirection = initialPositionDirection;
+		this.currentPositionDirection = initialPositionDirection;
 		this.instructionDeque = instructionDeque;
 	}
 
@@ -52,6 +53,15 @@ public class TondeuseModel {
 	 */
 	public InstructionEnum getNextInstruction() {
 		return instructionDeque.pop();
+	}
+	
+	/**
+	 * Returns <code>true</code> if there is still instructions to execute, <ode>false</code> otherwise.
+	 * 
+	 * @return <code>true</code> if there is still instructions to execute, <ode>false</code> otherwise
+	 */
+	public boolean hasInstruction() {
+		return !instructionDeque.isEmpty();
 	}
 
 	/**
@@ -70,6 +80,16 @@ public class TondeuseModel {
 	 */
 	public PositionDirectionModel getCurrentPositionDirection() {
 		return currentPositionDirection;
+	}
+	
+	/**
+	 * Sets the current position and direction of the "Tondeuse"
+	 * 
+	 * @param currentPositionDirection
+	 *            current position and direction
+	 */
+	public void setCurrentPositionDirection(PositionDirectionModel currentPositionDirection) {
+		this.currentPositionDirection = currentPositionDirection;
 	}
 
 	/**

@@ -12,12 +12,12 @@ import fr.mowitnow.tondeuse.model.TondeuseModel;
 
 public class Application {
 
-	private static TondeuseExecutor executor = new TondeuseExecutor();
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		File instructionsFile = new File(Application.class.getClassLoader().getResource("instructions.txt").getFile());
 		Pair<PelouseModel, List<TondeuseModel>> modelPair = InstructionsFileParser.parseInstructionsFile(instructionsFile);
 		PelouseModel pelouseModel = modelPair.getValue0();
+		//TondeuseExecutor executor = new TondeuseExecutor(pelouseModel)
 		List<TondeuseModel> tondeuseModelList = modelPair.getValue1();
 		
 		
