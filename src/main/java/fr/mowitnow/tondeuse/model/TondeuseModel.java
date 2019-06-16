@@ -13,9 +13,14 @@ import fr.mowitnow.tondeuse.enumeration.InstructionEnum;
 public class TondeuseModel {
 
 	/**
-	 * Initial position of the "Tondeuse".
+	 * Initial position and direction of the "Tondeuse".
 	 */
 	private PositionDirectionModel initialPositionDirection;
+	
+	/**
+	 * current position and direction of the "Tondeuse".
+	 */
+	private PositionDirectionModel currentPositionDirection;
 
 	/**
 	 * Instructions chain that the "Tondeuse" should do.
@@ -56,6 +61,15 @@ public class TondeuseModel {
 	 */
 	public PositionDirectionModel getInitialPositionDirection() {
 		return initialPositionDirection;
+	}
+	
+	/**
+	 * Returns the current position and direction of the "Tondeuse".
+	 * 
+	 * @return the current position and direction of the "Tondeuse".
+	 */
+	public PositionDirectionModel getCurrentPositionDirection() {
+		return currentPositionDirection;
 	}
 
 	/**
